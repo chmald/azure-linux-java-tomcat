@@ -19,6 +19,7 @@ COPY init_container.sh /bin/
 
 COPY tomcat-users.xml /usr/local/tomcat/conf/
 COPY myapp.war /usr/local/tomcat/webapps/
+COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
 
 # Run the chmod command to change permissions on above file in the /bin directory
 RUN chmod 755 /bin/init_container.sh 
