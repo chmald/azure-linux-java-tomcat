@@ -17,6 +17,8 @@ COPY sshd_config /etc/ssh/
 # Copy init_container.sh to the /bin directory
 COPY init_container.sh /bin/
 
+COPY tomcat-users.xml /usr/local/tomcat/conf
+
 # Run the chmod command to change permissions on above file in the /bin directory
 RUN chmod 755 /bin/init_container.sh 
 
