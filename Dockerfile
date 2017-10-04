@@ -2,6 +2,7 @@ FROM tomcat:8.5-jre8
 
 RUN mkdir /app
 ADD . /app
+WORKDIR /app
 
 # Configure ports
 EXPOSE 8080 2222
@@ -35,4 +36,4 @@ RUN chmod 755 /bin/init_container.sh
 
 #WORKDIR /usr/local/tomcat
 
-CMD ["/bin/init-container.sh"]
+CMD ["/bin/init_container.sh"]
