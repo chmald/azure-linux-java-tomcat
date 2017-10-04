@@ -20,5 +20,6 @@ COPY init_container.sh /bin/
 # Run the chmod command to change permissions on above file in the /bin directory
 RUN chmod 755 /bin/init_container.sh 
 
-# run commands in init_container.sh
-CMD ["/bin/init_container.sh"]
+WORKDIR /usr/local/tomcat
+
+RUN /etc/init.d/ssh start
