@@ -15,15 +15,18 @@ RUN apt-get update \
 COPY sshd_config /etc/ssh/
 
 # Copy init_container.sh to the /bin directory
-COPY init_container.sh /bin/
+#COPY init_container.sh /bin/
 
 COPY tomcat-users.xml /usr/local/tomcat/conf/
+
 COPY myapp.war /usr/local/tomcat/webapps/
+RUN chmod 755 /usr/local/tomcat/webapps/myapp.war 
+
 COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
 
 # Run the chmod command to change permissions on above file in the /bin directory
-RUN chmod 755 /bin/init_container.sh 
+#RUN chmod 755 /bin/init_container.sh 
 
 WORKDIR /usr/local/tomcat
 
-RUN /etc/init.d/ssh start
+RUN /etc/init.d/ssh restart
