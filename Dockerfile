@@ -22,17 +22,15 @@ COPY sshd_config /etc/ssh/
 COPY init_container.sh /bin/
 
 # Tomcat files
+# Tomcat confi for users to access /manager
 COPY tomcat-users.xml /usr/local/tomcat/conf/
+# Sample application
 COPY myapp.war /usr/local/tomcat/webapps/
-RUN chmod 755 /usr/local/tomcat/webapps/myapp.war 
+RUN chmod 755 /usr/local/tomcat/webapps/myapp.war
+# Context file to allow /manager access from any host
 COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
-
-# Copy supervisor config to ./conf.d directory
-# COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf	
 
 # Run the chmod command to change permissions on above file in the /bin directory
 RUN chmod 755 /bin/init_container.sh
-
-#WORKDIR /usr/local/tomcat
 
 CMD ["/bin/init_container.sh"]
