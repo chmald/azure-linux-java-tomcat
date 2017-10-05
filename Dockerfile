@@ -31,7 +31,7 @@ COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
 # COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf	
 
 # Run the chmod command to change permissions on above file in the /bin directory
-RUN chmod 755 /bin/init_container.sh 
+RUN chmod 755 /bin/init_container.sh
 
 #WORKDIR /usr/local/tomcat
 
