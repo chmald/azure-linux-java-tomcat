@@ -10,8 +10,7 @@ EXPOSE 8080 2222
 # SSH
 RUN apt-get update \
     && apt-get install -y --no-install-recommends openssh-server \
-        supervisor \
-        git \
+        vim \
     && echo "root:Docker!" | chpasswd
 
 RUN mkdir -p /home/LogFiles
@@ -29,7 +28,7 @@ RUN chmod 755 /usr/local/tomcat/webapps/myapp.war
 COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
 
 # Copy supervisor config to ./conf.d directory
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf	
+# COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf	
 
 # Run the chmod command to change permissions on above file in the /bin directory
 RUN chmod 755 /bin/init_container.sh 
