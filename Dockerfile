@@ -25,8 +25,8 @@ COPY init_container.sh /bin/
 # Tomcat confi for users to access /manager
 COPY tomcat-users.xml /usr/local/tomcat/conf/
 # Sample application
-COPY myapp.war /usr/local/tomcat/webapps/
-RUN chmod 755 /usr/local/tomcat/webapps/myapp.war
+COPY ROOT.war /usr/local/tomcat/webapps/
+RUN chmod 755 /usr/local/tomcat/webapps/ROOT.war
 # Context file to allow /manager access from any host
 COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
 
